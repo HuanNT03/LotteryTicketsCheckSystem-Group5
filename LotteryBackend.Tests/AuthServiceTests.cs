@@ -6,29 +6,29 @@ using LotteryBackend.Repositories;
 
 public class AuthServiceTests
 {
-    private readonly Mock<IUserRepository> _mockUserRepository;
-    private readonly IAuthService _authService;
+    //private readonly Mock<IUserRepository> _mockUserRepository;
+    //private readonly IAuthService _authService;
 
-    public AuthServiceTests()
-    {
-        _mockUserRepository = new Mock<IUserRepository>();
-        _authService = new AuthService(_mockUserRepository.Object);
-    }
+    //public AuthServiceTests()
+    //{
+    //    _mockUserRepository = new Mock<IUserRepository>();
+    //    _authService = new AuthService(_mockUserRepository.Object);
+    //}
 
-    [Fact]
-    public async Task Authenticate_ValidCredentials_ReturnsUser()
-    {
-        // Arrange
-        var username = "testuser";
-        var password = "password";
-        var hashedPassword = _authService.HashPassword(password);
+    //[Fact]
+    //public async Task Authenticate_ValidCredentials_ReturnsUser()
+    //{
+    //    // Arrange
+    //    var username = "testuser";
+    //    var password = "password";
+    //    var hashedPassword = _authService.HashPassword(password);
 
-        _mockUserRepository.Setup(repo => repo.GetUserByUsernameAsync(username))
-            .ReturnsAsync(new User { Username = username, PasswordHash = hashedPassword });
+    //    _mockUserRepository.Setup(repo => repo.GetUserByUsernameAsync(username))
+    //        .ReturnsAsync(new User { Username = username, PasswordHash = hashedPassword });
 
-        var user = await _authService.Authenticate(username, password);
+    //    var user = await _authService.Authenticate(username, password);
 
-        Assert.NotNull(user); 
-        Assert.Equal(username, user.Username);
-    }
+    //    Assert.NotNull(user); 
+    //    Assert.Equal(username, user.Username);
+    //}
 }

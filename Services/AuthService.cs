@@ -15,7 +15,7 @@ public class AuthService : IAuthService
     public async Task<User> Authenticate(string username, string password)
     {
         var user = await _userRepository.GetUserByUsernameAsync(username);
-        if (user == null || !VerifyPassword(password, user.PasswordHash))
+        if (user == null || !VerifyPassword(password, user.PasswordHash, user.Salt))
         {
             return null;
         }
@@ -25,18 +25,24 @@ public class AuthService : IAuthService
 
     public async Task Register(User user)
     {
-        user.PasswordHash = HashPassword(user.PasswordHash);
-        await _userRepository.AddUserAsync(user);
-    }
-
-    public string HashPassword(string password)
-    {
+        // Generate a salt
         byte[] salt = new byte[128 / 8];
         using (var rng = RandomNumberGenerator.Create())
         {
             rng.GetBytes(salt);
         }
 
+        // Hash the password with the salt
+        user.PasswordHash = HashPassword(user.PasswordHash, salt);
+
+        // Convert the salt to a string and store it alongside the hash
+        user.Salt = Convert.ToBase64String(salt);
+
+        await _userRepository.AddUserAsync(user);
+    }
+
+    public string HashPassword(string password, byte[] salt)
+    {
         return Convert.ToBase64String(KeyDerivation.Pbkdf2(
             password: password,
             salt: salt,
@@ -45,8 +51,10 @@ public class AuthService : IAuthService
             numBytesRequested: 256 / 8));
     }
 
-    private bool VerifyPassword(string password, string storedHash)
+    private bool VerifyPassword(string password, string storedHash, string storedSalt)
     {
-        return storedHash == HashPassword(password);
+        byte[] salt = Convert.FromBase64String(storedSalt);
+        string hash = HashPassword(password, salt);
+        return hash == storedHash;
     }
 }

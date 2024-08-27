@@ -16,6 +16,12 @@ public class AuthController : ControllerBase
     public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
     {
         var user = await _authService.Authenticate(loginDto.Username, loginDto.Password);
+        //
+        if (loginDto == null || string.IsNullOrEmpty(loginDto.Password))
+        {
+            return BadRequest("Invalid login request.");
+        }
+        //
         if (user == null)
         {
             return Unauthorized();
