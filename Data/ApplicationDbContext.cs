@@ -20,6 +20,7 @@ namespace LotteryBackend.Data
             base.OnModelCreating(modelBuilder);
 
             // Configure relationships and other constraints here if needed
+            modelBuilder.Entity<CheckHistory>().ToTable("CheckHistory");
         }
     }
 

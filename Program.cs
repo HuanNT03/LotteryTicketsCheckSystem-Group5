@@ -14,6 +14,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<ICheckHistoryRepository, CheckHistoryRepository>();
+builder.Services.AddScoped<IHistoryService, HistoryService>();
+builder.Services.AddScoped<ILotteryResultRepository, LotteryResultRepository>();
+builder.Services.AddScoped<ILotteryService, LotteryService>();
+builder.Services.AddScoped<ITicketRepository, TicketRepository>();
+builder.Services.AddScoped<ITicketService, TicketService>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
