@@ -1,7 +1,10 @@
 ﻿using LotteryBackend.Models;
 
-public interface IHistoryService
+namespace LotteryBackend.Services
 {
-    Task<IEnumerable<CheckHistory>> GetHistoryByUserIdAsync(int userId);
-    Task AddHistoryAsync(CheckHistory history);
+    public interface IHistoryService
+    {
+        Task<IEnumerable<CheckHistory>> GetHistoryByUserIdAsync(int userId);
+        Task AddHistoryAsync(CheckHistory history);
+    }
 }

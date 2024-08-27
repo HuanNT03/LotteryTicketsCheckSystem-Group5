@@ -1,51 +1,72 @@
 ﻿using LotteryBackend.Data;
 using LotteryBackend.Models;
-using LotteryBackend.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-public class UserRepository : IUserRepository
+namespace LotteryBackend.Repositories
 {
-    private readonly ApplicationDbContext _context;
-
-    public UserRepository(ApplicationDbContext context)
+    public class UserRepository : IUserRepository
     {
-        _context = context;
-    }
+        private readonly ApplicationDbContext _context;
 
-    public async Task<User> GetUserByIdAsync(int id)
-    {
-        return await _context.Users.FindAsync(id);
-    }
-
-    public async Task<User> GetUserByUsernameAsync(string username)
-    {
-        return await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
-    }
-
-    public async Task<IEnumerable<User>> GetAllUsersAsync()
-    {
-        return await _context.Users.ToListAsync();
-    }
-
-    public async Task AddUserAsync(User user)
-    {
-        _context.Users.Add(user);
-        await _context.SaveChangesAsync();
-    }
-
-    public async Task UpdateUserAsync(User user)
-    {
-        _context.Users.Update(user);
-        await _context.SaveChangesAsync();
-    }
-
-    public async Task DeleteUserAsync(int id)
-    {
-        var user = await _context.Users.FindAsync(id);
-        if (user != null)
+        public UserRepository(ApplicationDbContext context)
         {
-            _context.Users.Remove(user);
+            _context = context;
+        }
+
+        public async Task<User> GetUserByIdAsync(int userId)
+        {
+            return await _context.Users
+                .Include(u => u.Tickets)
+                .Include(u => u.CheckHistories)
+                .FirstOrDefaultAsync(u => u.Id == userId);
+        }
+
+        public async Task<User> GetUserByUsernameAsync(string username)
+        {
+            return await _context.Users
+                .Include(u => u.Tickets)
+                .Include(u => u.CheckHistories)
+                .FirstOrDefaultAsync(u => u.Username == username);
+        }
+
+        public async Task AddUserAsync(User user)
+        {
+            await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateUserAsync(User user)
+        {
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteUserAsync(int userId)
+        {
+            var user = await GetUserByIdAsync(userId);
+            if (user != null)
+            {
+                _context.Users.Remove(user);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
+        {
+            var users = await _context.Users
+                .Include(u => u.Tickets)
+                .Include(u => u.CheckHistories)
+                .ToListAsync();
+
+            // Xử lý trường hợp NULL
+            users.ForEach(u =>
+            {
+                u.Username = u.Username ?? string.Empty;
+                u.Email = u.Email ?? string.Empty;
+                u.Role = u.Role ?? string.Empty;
+            });
+
+            return users;
         }
     }
 }

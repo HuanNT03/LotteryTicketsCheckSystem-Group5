@@ -1,62 +1,49 @@
 ﻿using LotteryBackend.Models;
+using LotteryBackend.Services;
 using Microsoft.AspNetCore.Mvc;
 
-[ApiController]
-[Route("api/[controller]")]
-public class TicketsController : ControllerBase
+namespace LotteryBackend.Controllers
 {
-    private readonly ITicketService _ticketService;
-
-    public TicketsController(ITicketService ticketService)
+    [ApiController]
+    [Route("api/[controller]")]
+    public class TicketsController : ControllerBase
     {
-        _ticketService = ticketService;
-    }
+        private readonly ITicketService _ticketService;
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetTicket(int id)
-    {
-        var ticket = await _ticketService.GetTicketByIdAsync(id);
-        if (ticket == null)
+        public TicketsController(ITicketService ticketService)
         {
-            return NotFound();
-        }
-        return Ok(ticket);
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> AddTicket([FromBody] TicketDto ticketDto)
-    {
-        var ticket = new Ticket
-        {
-            TicketNumber = ticketDto.TicketNumber,
-            LotteryDate = ticketDto.LotteryDate,
-            UserId = ticketDto.UserId
-        };
-
-        await _ticketService.AddTicketAsync(ticket);
-        return Ok();
-    }
-
-    [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateTicket(int id, [FromBody] TicketDto ticketDto)
-    {
-        var ticket = await _ticketService.GetTicketByIdAsync(id);
-        if (ticket == null)
-        {
-            return NotFound();
+            _ticketService = ticketService;
         }
 
-        ticket.TicketNumber = ticketDto.TicketNumber;
-        ticket.LotteryDate = ticketDto.LotteryDate;
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetTicket(int id)
+        {
+            var ticket = await _ticketService.GetTicketByIdAsync(id);
+            if (ticket == null)
+                return NotFound();
 
-        await _ticketService.UpdateTicketAsync(ticket);
-        return NoContent();
-    }
+            return Ok(ticket);
+        }
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteTicket(int id)
-    {
-        await _ticketService.DeleteTicketAsync(id);
-        return NoContent();
+        [HttpPost]
+        public async Task<IActionResult> AddTicket([FromBody] Ticket ticket)
+        {
+            var newTicket = await _ticketService.AddTicketAsync(ticket);
+            return CreatedAtAction(nameof(GetTicket), new { id = newTicket.Id }, newTicket);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateTicket(int id, [FromBody] Ticket updatedTicket)
+        {
+            await _ticketService.UpdateTicketAsync(id, updatedTicket);
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTicket(int id)
+        {
+            await _ticketService.DeleteTicketAsync(id);
+            return NoContent();
+        }
     }
 }

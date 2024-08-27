@@ -1,22 +1,25 @@
 ﻿using LotteryBackend.Models;
 using LotteryBackend.Repositories;
 
-public class HistoryService : IHistoryService
+namespace LotteryBackend.Services
 {
-    private readonly ICheckHistoryRepository _checkHistoryRepository;
-
-    public HistoryService(ICheckHistoryRepository checkHistoryRepository)
+    public class HistoryService : IHistoryService
     {
-        _checkHistoryRepository = checkHistoryRepository;
-    }
+        private readonly ICheckHistoryRepository _checkHistoryRepository;
 
-    public async Task<IEnumerable<CheckHistory>> GetHistoryByUserIdAsync(int userId)
-    {
-        return await _checkHistoryRepository.GetHistoryByUserIdAsync(userId);
-    }
+        public HistoryService(ICheckHistoryRepository checkHistoryRepository)
+        {
+            _checkHistoryRepository = checkHistoryRepository;
+        }
 
-    public async Task AddHistoryAsync(CheckHistory history)
-    {
-        await _checkHistoryRepository.AddHistoryAsync(history);
+        public async Task<IEnumerable<CheckHistory>> GetHistoryByUserIdAsync(int userId)
+        {
+            return await _checkHistoryRepository.GetHistoryByUserIdAsync(userId);
+        }
+
+        public async Task AddHistoryAsync(CheckHistory history)
+        {
+            await _checkHistoryRepository.AddHistoryAsync(history);
+        }
     }
 }

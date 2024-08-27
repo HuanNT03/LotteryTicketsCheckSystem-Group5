@@ -1,22 +1,40 @@
 ﻿using LotteryBackend.Models;
 using LotteryBackend.Repositories;
 
-public class LotteryService : ILotteryService
+namespace LotteryBackend.Services
 {
-    private readonly ILotteryResultRepository _lotteryResultRepository;
-
-    public LotteryService(ILotteryResultRepository lotteryResultRepository)
+    public class LotteryService : ILotteryService
     {
-        _lotteryResultRepository = lotteryResultRepository;
-    }
+        private readonly ILotteryResultRepository _lotteryResultRepository;
 
-    public async Task<LotteryResult> GetLotteryResultByDateAsync(DateTime date)
-    {
-        return await _lotteryResultRepository.GetLotteryResultByDateAsync(date);
-    }
+        public LotteryService(ILotteryResultRepository lotteryResultRepository)
+        {
+            _lotteryResultRepository = lotteryResultRepository;
+        }
 
-    public async Task AddLotteryResultAsync(LotteryResult result)
-    {
-        await _lotteryResultRepository.AddLotteryResultAsync(result);
+        public async Task<LotteryResult?> GetResultByDateAsync(DateTime date)
+        {
+            return await _lotteryResultRepository.GetResultByDateAsync(date);
+        }
+
+        public async Task AddResultAsync(LotteryResult result)
+        {
+            await _lotteryResultRepository.AddResultAsync(result);
+        }
+
+        public async Task<IEnumerable<LotteryResult>> GetAllResultsAsync()
+        {
+            return await _lotteryResultRepository.GetAllResultsAsync();
+        }
+
+        public async Task UpdateResultAsync(LotteryResult result)
+        {
+            await _lotteryResultRepository.UpdateResultAsync(result);
+        }
+
+        public async Task DeleteResultAsync(int resultId)
+        {
+            await _lotteryResultRepository.DeleteResultAsync(resultId);
+        }
     }
 }

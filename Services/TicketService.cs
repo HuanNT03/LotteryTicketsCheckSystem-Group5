@@ -1,37 +1,41 @@
 ﻿using LotteryBackend.Models;
 using LotteryBackend.Repositories;
 
-public class TicketService : ITicketService
+namespace LotteryBackend.Services
 {
-    private readonly ITicketRepository _ticketRepository;
-
-    public TicketService(ITicketRepository ticketRepository)
+    public class TicketService : ITicketService
     {
-        _ticketRepository = ticketRepository;
-    }
+        private readonly ITicketRepository _ticketRepository;
 
-    public async Task<Ticket> GetTicketByIdAsync(int ticketId)
-    {
-        return await _ticketRepository.GetTicketByIdAsync(ticketId);
-    }
+        public TicketService(ITicketRepository ticketRepository)
+        {
+            _ticketRepository = ticketRepository;
+        }
 
-    public async Task<IEnumerable<Ticket>> GetTicketsByUserIdAsync(int userId)
-    {
-        return await _ticketRepository.GetTicketsByUserIdAsync(userId);
-    }
+        public async Task<Ticket?> GetTicketByIdAsync(int ticketId)
+        {
+            return await _ticketRepository.GetTicketByIdAsync(ticketId);
+        }
 
-    public async Task AddTicketAsync(Ticket ticket)
-    {
-        await _ticketRepository.AddTicketAsync(ticket);
-    }
+        public async Task<Ticket> AddTicketAsync(Ticket newTicket)
+        {
+            await _ticketRepository.AddTicketAsync(newTicket);
+            return newTicket;
+        }
 
-    public async Task UpdateTicketAsync(Ticket ticket)
-    {
-        await _ticketRepository.UpdateTicketAsync(ticket);
-    }
+        public async Task<IEnumerable<Ticket>> GetTicketsByUserIdAsync(int userId)
+        {
+            return await _ticketRepository.GetTicketsByUserIdAsync(userId);
+        }
 
-    public async Task DeleteTicketAsync(int ticketId)
-    {
-        await _ticketRepository.DeleteTicketAsync(ticketId);
+        public async Task UpdateTicketAsync(int ticketId, Ticket updatedTicket)
+        {
+            await _ticketRepository.UpdateTicketAsync(updatedTicket);
+        }
+
+        public async Task DeleteTicketAsync(int ticketId)
+        {
+            await _ticketRepository.DeleteTicketAsync(ticketId);
+        }
     }
 }

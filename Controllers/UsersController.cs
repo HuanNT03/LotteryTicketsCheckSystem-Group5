@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize(Roles = "Admin")]
+//[Authorize(Roles = "Admin")]
 public class UsersController : ControllerBase
 {
     private readonly IUserService _userService;

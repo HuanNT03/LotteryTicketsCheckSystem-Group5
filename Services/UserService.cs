@@ -45,10 +45,18 @@ public class UserService : IUserService
 
     public async Task AddUserAsync(CreateUserDto userDto)
     {
+        // Tạo Salt
+        byte[] salt = new byte[128 / 8];
+        using (var rng = RandomNumberGenerator.Create())
+        {
+            rng.GetBytes(salt);
+        }
+
         var user = new User
         {
             Username = userDto.Username,
-            PasswordHash = HashPassword(userDto.Password), 
+            Salt = Convert.ToBase64String(salt), // Lưu Salt vào cơ sở dữ liệu
+            PasswordHash = HashPassword(userDto.Password, salt),
             Email = userDto.Email,
             Role = userDto.Role
         };
@@ -76,14 +84,8 @@ public class UserService : IUserService
         await _userRepository.DeleteUserAsync(id);
     }
 
-    private string HashPassword(string password)
+    private string HashPassword(string password, byte[] salt)
     {
-        byte[] salt = new byte[128 / 8];
-        using (var rng = RandomNumberGenerator.Create())
-        {
-            rng.GetBytes(salt);
-        }
-
         return Convert.ToBase64String(KeyDerivation.Pbkdf2(
             password: password,
             salt: salt,

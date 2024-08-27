@@ -1,47 +1,44 @@
-﻿using LotteryBackend.Models;
+﻿using LotteryBackend.DTOs;
+using LotteryBackend.Models;
+using LotteryBackend.Services;
 using Microsoft.AspNetCore.Mvc;
 
-[ApiController]
-[Route("api/[controller]")]
-public class AuthController : ControllerBase
+namespace LotteryBackend.Controllers
 {
-    private readonly IAuthService _authService;
-
-    public AuthController(IAuthService authService)
+    [ApiController]
+    [Route("api/[controller]")]
+    public class AuthController : ControllerBase
     {
-        _authService = authService;
-    }
+        private readonly IAuthService _authService;
 
-    [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
-    {
-        var user = await _authService.Authenticate(loginDto.Username, loginDto.Password);
-        //
-        if (loginDto == null || string.IsNullOrEmpty(loginDto.Password))
+        public AuthController(IAuthService authService)
         {
-            return BadRequest("Invalid login request.");
-        }
-        //
-        if (user == null)
-        {
-            return Unauthorized();
+            _authService = authService;
         }
 
-        return Ok();
-    }
-
-    [HttpPost("register")]
-    public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
-    {
-        var user = new User
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
         {
-            Username = registerDto.Username,
-            PasswordHash = registerDto.Password,
-            Email = registerDto.Email,
-            Role = "User"
-        };
+            var user = await _authService.Authenticate(loginDto.Username, loginDto.Password);
+            if (user == null)
+                return Unauthorized();
 
-        await _authService.Register(user);
-        return Ok();
+            return Ok(new { message = "Login successful" });
+        }
+
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
+        {
+            var user = new User
+            {
+                Username = registerDto.Username,
+                PasswordHash = registerDto.Password,
+                Email = registerDto.Email,
+                Role = "User"
+            };
+            await _authService.Register(user);
+
+            return Ok(new { message = "Registration successful" });
+        }
     }
 }

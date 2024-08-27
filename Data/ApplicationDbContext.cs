@@ -19,9 +19,24 @@ namespace LotteryBackend.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configure relationships and other constraints here if needed
+            // Configure relationships and other constraints
+
             modelBuilder.Entity<CheckHistory>().ToTable("CheckHistory");
+
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.Tickets)
+                .WithOne(t => t.User)
+                .HasForeignKey(t => t.UserId);
+
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.CheckHistories)
+                .WithOne(ch => ch.User)
+                .HasForeignKey(ch => ch.UserId);
+
+            modelBuilder.Entity<Ticket>()
+                .HasMany(t => t.CheckHistories)
+                .WithOne(ch => ch.Ticket)
+                .HasForeignKey(ch => ch.TicketId);
         }
     }
-
 }

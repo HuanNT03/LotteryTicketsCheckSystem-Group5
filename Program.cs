@@ -2,53 +2,44 @@ using LotteryBackend.Data;
 using LotteryBackend.Repositories;
 using LotteryBackend.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add services to the container.
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+// Configure the DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Register services and repositories
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<ICheckHistoryRepository, CheckHistoryRepository>();
-builder.Services.AddScoped<IHistoryService, HistoryService>();
-builder.Services.AddScoped<ILotteryResultRepository, LotteryResultRepository>();
-builder.Services.AddScoped<ILotteryService, LotteryService>();
 builder.Services.AddScoped<ITicketRepository, TicketRepository>();
+builder.Services.AddScoped<ILotteryResultRepository, LotteryResultRepository>();
+builder.Services.AddScoped<ICheckHistoryRepository, CheckHistoryRepository>();
+
+builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ITicketService, TicketService>();
+builder.Services.AddScoped<ILotteryService, LotteryService>();
+builder.Services.AddScoped<IHistoryService, HistoryService>();
+builder.Services.AddScoped<IUserService, UserService>(); 
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-            ValidIssuer = builder.Configuration["JwtSettings:Issuer"],
-            ValidAudience = builder.Configuration["JwtSettings:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:Secret"]))
-        };
-    });
-
-
-builder.Services.AddAuthorization(options =>
+builder.Services.AddControllers().AddJsonOptions(options =>
 {
-    options.AddPolicy("AdminPolicy", policy => policy.RequireRole("Admin"));
+    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
 });
-
-builder.Services.AddControllers();
-builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI();
 }

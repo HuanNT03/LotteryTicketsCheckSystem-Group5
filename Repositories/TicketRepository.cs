@@ -15,18 +15,24 @@ namespace LotteryBackend.Repositories
 
         public async Task<Ticket> GetTicketByIdAsync(int ticketId)
         {
-            return await _context.Tickets.FindAsync(ticketId);
-        }
-
-        public async Task<IEnumerable<Ticket>> GetTicketsByUserIdAsync(int userId)
-        {
-            return await _context.Tickets.Where(t => t.UserId == userId).ToListAsync();
+            return await _context.Tickets
+                .Include(t => t.User)
+                .Include(t => t.CheckHistories)
+                .FirstOrDefaultAsync(t => t.Id == ticketId);
         }
 
         public async Task AddTicketAsync(Ticket ticket)
         {
-            _context.Tickets.Add(ticket);
+            await _context.Tickets.AddAsync(ticket);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Ticket>> GetTicketsByUserIdAsync(int userId)
+        {
+            return await _context.Tickets
+                .Include(t => t.User)
+                .Where(t => t.UserId == userId)
+                .ToListAsync();
         }
 
         public async Task UpdateTicketAsync(Ticket ticket)
@@ -37,7 +43,7 @@ namespace LotteryBackend.Repositories
 
         public async Task DeleteTicketAsync(int ticketId)
         {
-            var ticket = await _context.Tickets.FindAsync(ticketId);
+            var ticket = await GetTicketByIdAsync(ticketId);
             if (ticket != null)
             {
                 _context.Tickets.Remove(ticket);

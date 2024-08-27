@@ -3,58 +3,59 @@ using LotteryBackend.Models;
 using LotteryBackend.Repositories;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
-public class AuthService : IAuthService
+namespace LotteryBackend.Services
 {
-    private readonly IUserRepository _userRepository;
-
-    public AuthService(IUserRepository userRepository)
+    public class AuthService : IAuthService
     {
-        _userRepository = userRepository;
-    }
+        private readonly IUserRepository _userRepository;
 
-    public async Task<User> Authenticate(string username, string password)
-    {
-        var user = await _userRepository.GetUserByUsernameAsync(username);
-        if (user == null || !VerifyPassword(password, user.PasswordHash, user.Salt))
+        public AuthService(IUserRepository userRepository)
         {
-            return null;
+            _userRepository = userRepository;
         }
 
-        return user;
-    }
-
-    public async Task Register(User user)
-    {
-        // Generate a salt
-        byte[] salt = new byte[128 / 8];
-        using (var rng = RandomNumberGenerator.Create())
+        public async Task<User?> Authenticate(string username, string password)
         {
-            rng.GetBytes(salt);
+            var user = await _userRepository.GetUserByUsernameAsync(username);
+            if (user == null || !VerifyPassword(password, user.PasswordHash, user.Salt))
+            {
+                return null;
+            }
+
+            return user;
         }
 
-        // Hash the password with the salt
-        user.PasswordHash = HashPassword(user.PasswordHash, salt);
+        public async Task Register(User user)
+        {
+            user.Salt = GenerateSalt();
+            user.PasswordHash = HashPassword(user.PasswordHash, user.Salt);
+            await _userRepository.AddUserAsync(user);
+        }
 
-        // Convert the salt to a string and store it alongside the hash
-        user.Salt = Convert.ToBase64String(salt);
+        public string HashPassword(string password, string salt)
+        {
+            return Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                password: password,
+                salt: Convert.FromBase64String(salt),
+                prf: KeyDerivationPrf.HMACSHA1,
+                iterationCount: 10000,
+                numBytesRequested: 256 / 8));
+        }
 
-        await _userRepository.AddUserAsync(user);
-    }
+        public string GenerateSalt()
+        {
+            byte[] salt = new byte[128 / 8];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(salt);
+            }
 
-    public string HashPassword(string password, byte[] salt)
-    {
-        return Convert.ToBase64String(KeyDerivation.Pbkdf2(
-            password: password,
-            salt: salt,
-            prf: KeyDerivationPrf.HMACSHA1,
-            iterationCount: 10000,
-            numBytesRequested: 256 / 8));
-    }
+            return Convert.ToBase64String(salt);
+        }
 
-    private bool VerifyPassword(string password, string storedHash, string storedSalt)
-    {
-        byte[] salt = Convert.FromBase64String(storedSalt);
-        string hash = HashPassword(password, salt);
-        return hash == storedHash;
+        private bool VerifyPassword(string password, string storedHash, string salt)
+        {
+            return storedHash == HashPassword(password, salt);
+        }
     }
 }

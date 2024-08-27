@@ -1,36 +1,25 @@
 ﻿using LotteryBackend.Models;
+using LotteryBackend.Services;
 using Microsoft.AspNetCore.Mvc;
 
-[ApiController]
-[Route("api/[controller]")]
-public class HistoryController : ControllerBase
+namespace LotteryBackend.Controllers
 {
-    private readonly IHistoryService _historyService;
-
-    public HistoryController(IHistoryService historyService)
+    [ApiController]
+    [Route("api/[controller]")]
+    public class HistoryController : ControllerBase
     {
-        _historyService = historyService;
-    }
+        private readonly IHistoryService _historyService;
 
-    [HttpGet("{userId}")]
-    public async Task<IActionResult> GetHistoryByUserId(int userId)
-    {
-        var history = await _historyService.GetHistoryByUserIdAsync(userId);
-        return Ok(history);
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> AddHistory([FromBody] CheckHistoryDto historyDto)
-    {
-        var history = new CheckHistory
+        public HistoryController(IHistoryService historyService)
         {
-            UserId = historyDto.UserId,
-            TicketId = historyDto.TicketId,
-            CheckDate = DateTime.Now,
-            Result = historyDto.Result
-        };
+            _historyService = historyService;
+        }
 
-        await _historyService.AddHistoryAsync(history);
-        return Ok();
+        [HttpGet("{userId}")]
+        public async Task<IActionResult> GetHistoryByUserId(int userId)
+        {
+            var history = await _historyService.GetHistoryByUserIdAsync(userId);
+            return Ok(history);
+        }
     }
 }
