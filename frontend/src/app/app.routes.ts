@@ -8,7 +8,8 @@ import { TicketResultsSearchComponent } from './components/search/ticket-results
 export const routes: Routes = [
     {
         path:'',
-        component: NoUserLayoutComponent
+        redirectTo: 'nouser',
+        pathMatch: 'full'
     },
     {
         path: 'nouser',
