@@ -8,10 +8,12 @@ public class AuthService
 {
     private readonly IRepository<User> _userRepository;
     private readonly IConfiguration _configuration;
+    private readonly IRepository<UserRole> _userRoleRepository;
 
-    public AuthService(IRepository<User> userRepository, IConfiguration configuration)
+    public AuthService(IRepository<User> userRepository, IRepository<UserRole> userRoleRepository, IConfiguration configuration)
     {
         _userRepository = userRepository;
+        _userRoleRepository = userRoleRepository;
         _configuration = configuration;
     }
 
@@ -30,6 +32,14 @@ public class AuthService
 
 
         await _userRepository.Add(user);
+        var userRole = new UserRole
+        {
+            UserId = user.UserId,
+            RoleId = 2 // Role mặc định là User;
+        };
+
+        await _userRoleRepository.Add(userRole);
+
         return user;
     }
 
@@ -50,18 +60,14 @@ public class AuthService
 
     public string GenerateJwtToken(User user)
     {
-        var role = user.UserRoles?.FirstOrDefault()?.Role.RoleName;
-        if (string.IsNullOrEmpty(role))
-        {
-            role = "User"; // Hoặc gán một vai trò mặc định nếu người dùng không có vai trò nào
-        }
+        var role = user.UserRoles?.FirstOrDefault()?.Role?.RoleName ?? "User"; // Gán role mặc định nếu không có
 
         var claims = new[]
         {
-        new Claim(JwtRegisteredClaimNames.Sub, user.UserId.ToString()),
-        new Claim(JwtRegisteredClaimNames.UniqueName, user.Username),
-        new Claim(ClaimTypes.Role, role)
-    };
+            new Claim(JwtRegisteredClaimNames.Sub, user.UserId.ToString()),
+            new Claim(JwtRegisteredClaimNames.UniqueName, user.Username),
+            new Claim(ClaimTypes.Role, role)
+        };
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512);

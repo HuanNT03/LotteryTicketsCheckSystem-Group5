@@ -11,6 +11,19 @@ public class UserController : ControllerBase
         _userService = userService;
     }
 
+    [HttpPost("change-role")]
+    public async Task<IActionResult> ChangeUserRole([FromBody] ChangeUserRoleDto dto)
+    {
+        var result = await _userService.ChangeUserRole(dto.UserId, dto.NewRoleId);
+
+        if (!result)
+        {
+            return BadRequest("Unable to change user role.");
+        }
+
+        return Ok("User role changed successfully.");
+    }
+
     [HttpGet]
     public async Task<IActionResult> GetUsers()
     {

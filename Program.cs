@@ -14,6 +14,7 @@ builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<ILotteryRepository, LotteryRepository>();
 builder.Services.AddScoped<ICheckHistoryRepository, CheckHistoryRepository>();
+builder.Services.AddScoped<IUserRoleRepository, UserRoleRepository>();
 
 // Services
 builder.Services.AddScoped<AuthService>();
