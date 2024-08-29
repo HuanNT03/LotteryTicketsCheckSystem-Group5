@@ -1,0 +1,21 @@
+table, td
+{
+    border-bottom: 0.1rem lightgray solid;
+    padding: 0.5rem;
+    border-collapse: collapse;
+}
+table
+{
+    width: 50rem;
+    text-align: center;
+}
+.prize-tag
+{
+    width: 10rem;
+    text-align: start;
+}
+.prize-num
+{
+    padding-left: 3rem;
+    padding-right: 3rem;
+}

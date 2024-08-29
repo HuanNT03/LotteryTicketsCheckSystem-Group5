@@ -1,0 +1,53 @@
+<app-navbar></app-navbar>
+<div style="padding: 2rem;">
+    <h2>Tìm kiếm người dùng</h2>
+    <div style="display: flex;">
+        <div class="container-box">
+            <div style="width: min-content;">
+                <div class="decoration"></div>
+                <div class="search-form-container">
+                    <div><h3>Tìm kiếm</h3></div>
+                    <form (ngSubmit)="onSearch()" #searchForm="ngForm">
+                        <div class="form-group">
+                        <input type="text" class="form-control text-input" id="searchQuery" name="searchQuery" placeholder="Nhập email hoặc số điện thoại" [(ngModel)]="searchQuery"/>
+                        </div>
+                        <button type="submit" class="submit">Tìm kiếm</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="data-box">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th><input id="checkAll" type="checkbox" [(ngModel)]="checkAll" (change)="selectAll($event)" /></th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Trạng thái</th>
+                    <th>Thêm</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let user of users">
+                    <td><input type="checkbox" [(ngModel)]="user.selected" (change)="onCheckBoxChange()" /></td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                    <select [(ngModel)]="user.status" (change)="changeStatus(user.id, user.status)">
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                    </td>
+                    <td>
+                    <a routerLink="">Xem chi tiết</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="change-status-panel" *ngIf="visible">
+        <button (click)="changeMultiStatus()">Deactivate</button>
+        <button (click)="changeMultiStatus()">Activate</button>
+    </div>
+</div>

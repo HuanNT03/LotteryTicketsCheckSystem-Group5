@@ -1,0 +1,10 @@
+<p>user-layout work!</p>
+<app-navbar></app-navbar>
+<h2>Kết quả quay xổ số</h2>
+<div *ngFor="let result of ticketResults" class="container">
+    <div class="decoration"></div>
+    <div class="result-box">
+        <app-ticket-result-table [ticketResult]="result"></app-ticket-result-table>
+        <button routerLink="" class="ticket-results-search-bttn">Dò số</button>
+    </div>
+</div>

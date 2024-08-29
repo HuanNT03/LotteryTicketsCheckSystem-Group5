@@ -1,0 +1,52 @@
+.container
+{
+    background-image: linear-gradient(to right, rgb(255,49,49), rgb(255, 111, 49));
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#form-container
+{
+    display: inline-block;
+    width: 35rem;
+    height: 22rem;
+}
+#form-container > div
+{
+    display: flex;
+    height: 100%;
+}
+#form-switch-item
+{
+    background-color: rgb(255,49,49);
+    color: white;
+    flex: 1;
+    padding: 1rem;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+#form-switch-item button
+{
+    padding: 0rem 1rem 0rem 1rem;
+    font-weight: bold;
+    color: white;
+    border: 0.2rem white solid;
+    background-color: transparent;
+    border-radius: 2rem;
+    line-height: 1.5rem;
+    margin: 1rem 0rem 1rem 0rem;
+}
+app-login
+{
+    padding: 1rem;
+    flex: 1;
+    background-color: white;
+}
+app-register
+{
+    padding: 1rem;
+    flex: 2;
+    background-color: white;
+}

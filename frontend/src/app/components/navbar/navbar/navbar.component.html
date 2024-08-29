@@ -1,0 +1,33 @@
+<div class="nav-bar">
+    
+    <div style="flex: 1;">
+        <h2 class="nav-logo-items"><a>Xskt</a></h2>
+        <ul *ngIf="!isAuthenticated && !isAdmin">
+            <li class="nav-items no-user-navbar-items" routerLink=""> <a>Trang chủ</a> </li>
+            <li class="nav-items no-user-navbar-items" routerLink="/search-ticket-results" > <a>Trúng thưởng</a> </li>
+        </ul>
+        <ul *ngIf="isAuthenticated">
+            <li class="nav-items user-navbar-items" routerLink=""> <a>Trang chủ</a> </li>
+            <li class="nav-items user-navbar-items" routerLink="/search-ticket-results"> <a>Trúng thưởng</a> </li>
+            <li class="nav-items user-navbar-items"> <a>Lịch sử</a> </li>
+        </ul>
+        <ul *ngIf="isAdmin">
+            <li class="nav-items admin-navbar-items" > <a>Quản lý người dùng</a> </li>
+            <li class="nav-items admin-navbar-items"> <a>Quản lý vé dò</a> </li>
+        </ul>
+    </div>
+    
+    <div class="nav-items">
+        <button class="nav-auth-buttons" *ngIf="!isAuthenticated && !isAdmin" routerLink="/auth">Đăng nhập</button>
+        <button class="nav-auth-buttons" *ngIf="isAuthenticated" (click)="onClick()" #excludedArea1>Xin chào {{user}}</button>
+        <button class="nav-auth-buttons" *ngIf="isAdmin" (click)="onClick()" #excludedArea1>Xin chào {{admin}}</button>
+    </div>
+</div>
+<div *ngIf="isAuthenticated || isAdmin">
+    <div id="account-panel" *ngIf="visible" #excludedArea2>
+        <h2 *ngIf="isAuthenticated">{{user}}</h2>
+        <h2 *ngIf="isAdmin">{{admin}}</h2>
+        <div (click)="logOut()">Đăng xuất</div>
+        <div routerLink="">Đổi mật khẩu</div>
+    </div>
+</div>

@@ -1,0 +1,95 @@
+.container-box
+{
+    width: min-content;
+    display: inline-block;
+    flex: 1;
+}
+.search-form-container
+{
+    width: 20rem;
+    padding: 2rem;
+    border: solid 0.1rem lightgray;
+    text-align: center;
+}
+.decoration
+{
+    height: 1.5rem;
+    width: 100%;
+    background: linear-gradient(to right, rgb(255,49,49), rgb(255, 111, 49));
+}
+button.submit
+{
+    padding: 0rem 1rem 0rem 1rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+    background-color: rgb(255, 49, 49);
+    border-radius: 2rem;
+    line-height: 1.8rem;
+    margin: 1rem 0rem 1rem 0rem;
+}
+.text-input 
+{
+    line-height: 1.5rem;
+    border: 0.1rem lightgray solid;
+    border-radius: 2rem;
+    width: 95%;
+}
+.text-input::placeholder
+{
+    padding: 0rem 1rem 0rem 1rem;
+}
+h3
+{
+    margin: 0;
+    padding: 0rem 0rem 1rem 0rem;
+}
+#change-status-panel
+{
+    width: 100vw;
+    position: sticky;
+    z-index: 90;
+    bottom: 0;
+    height: 10rem;
+    background-color: white;
+    color: white;
+    padding: 1rem;
+    border: lightgray solid 2px;
+    border-radius: 2rem 2rem 0 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: right;
+    align-items: start;
+}
+#change-status-panel button
+{
+    padding: 0rem 2rem 0rem 2rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+    background-color: rgb(255, 49, 49);
+    border-radius: 2rem;
+    line-height: 3rem;
+    margin: 1rem 0.5rem 1rem 0.5rem;
+}
+select 
+{
+    padding: 0.4rem 1rem 0.4rem 1rem;
+    border-radius: 2rem;
+    line-height: 2rem;
+}
+table
+{
+    width: 40rem;
+}
+table, td
+{
+    border: 0.1rem lightgray solid;
+    border-collapse: collapse;
+    padding: 0.5rem;
+}
+.data-box
+{
+    flex: 2;
+    margin-left: 2rem;
+}
