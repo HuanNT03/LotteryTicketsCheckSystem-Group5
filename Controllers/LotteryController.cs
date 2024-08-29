@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -10,12 +11,43 @@ public class LotteryController : ControllerBase
     {
         _lotteryService = lotteryService;
     }
+    // Endpoint để tạo vé số mới
+    [HttpPost("create")]
+    //[Authorize(Roles = "Admin")] // Chỉ admin mới có quyền tạo vé số
+    public async Task<IActionResult> CreateLotteryTicket([FromBody] CreateLotteryTicketDto dto)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        var ticket = new LotteryTicket
+        {
+            TicketNumber = dto.TicketNumber,
+            IssueDate = dto.IssueDate,
+            CompanyId = dto.CompanyId,
+            Status = dto.Status
+        };
+
+        var createdTicket = await _lotteryService.CreateLotteryTicket(ticket);
+        return CreatedAtAction(nameof(CreateLotteryTicket), new { id = createdTicket.TicketId }, createdTicket);
+    }
+
 
     [HttpGet]
-    public async Task<IActionResult> GetTickets()
+    public async Task<IActionResult> GetAllLotteryTickets()
     {
         var tickets = await _lotteryService.GetAllTickets();
-        return Ok(tickets);
+        var result = tickets.Select(t => new LotteryTicketDto
+        {
+            TicketId = t.TicketId,
+            TicketNumber = t.TicketNumber,
+            IssueDate = t.IssueDate,
+            CompanyName = t.LotteryCompany.CompanyName,
+            Status = t.Status
+        });
+
+        return Ok(result);
     }
 
     [HttpGet("{id}")]

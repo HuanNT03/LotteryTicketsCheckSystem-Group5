@@ -147,3 +147,4 @@ D:\code_virual\C#_.NET\FPT_.NET_FINAL_PROJECT\Test_6\LotteryCheckingSystem\obj\D
 D:\code_virual\C#_.NET\FPT_.NET_FINAL_PROJECT\Test_6\LotteryCheckingSystem\obj\Debug\net8.0\LotteryCheckingSystem.pdb
 D:\code_virual\C#_.NET\FPT_.NET_FINAL_PROJECT\Test_6\LotteryCheckingSystem\obj\Debug\net8.0\LotteryCheckingSystem.genruntimeconfig.cache
 D:\code_virual\C#_.NET\FPT_.NET_FINAL_PROJECT\Test_6\LotteryCheckingSystem\obj\Debug\net8.0\ref\LotteryCheckingSystem.dll
+D:\code_virual\C#_.NET\FPT_.NET_FINAL_PROJECT\Test_6\LotteryCheckingSystem\obj\Debug\net8.0\LotteryCheckingSystem.sourcelink.json

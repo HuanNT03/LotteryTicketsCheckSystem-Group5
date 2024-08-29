@@ -7,6 +7,15 @@
         _lotteryRepository = lotteryRepository;
     }
 
+    public async Task<LotteryTicket> CreateLotteryTicket(LotteryTicket ticket)
+    {
+        ticket.CreatedAt = DateTime.UtcNow;
+        ticket.UpdatedAt = DateTime.UtcNow;
+
+        await _lotteryRepository.Add(ticket);
+        return ticket;
+    }
+
     public async Task<IEnumerable<int>> GetTicketIdsByCompanyAndDate(string companyName, DateTime issueDate)
     {
         return await _lotteryRepository.GetTicketIdsByCompanyAndDate(companyName, issueDate);
