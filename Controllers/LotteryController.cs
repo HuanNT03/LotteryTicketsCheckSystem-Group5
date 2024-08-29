@@ -11,6 +11,14 @@ public class LotteryController : ControllerBase
     {
         _lotteryService = lotteryService;
     }
+
+    [HttpPost("update-prize")]
+    public async Task<IActionResult> UpdateTicketPrize([FromBody] UpdatePrizeDto dto)
+    {
+        await _lotteryService.UpdateTicketPrize(dto.TicketId, dto.Prize);
+        return Ok();
+    }
+
     // Endpoint để tạo vé số mới
     [HttpPost("create")]
     //[Authorize(Roles = "Admin")] // Chỉ admin mới có quyền tạo vé số

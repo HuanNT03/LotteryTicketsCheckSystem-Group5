@@ -1,10 +1,44 @@
 ﻿public class LotteryService
 {
     private readonly ILotteryRepository _lotteryRepository;
+    private readonly IRepository<TicketResult> _ticketResultRepository;
 
-    public LotteryService(ILotteryRepository lotteryRepository)
+    public LotteryService(ILotteryRepository lotteryRepository, IRepository<TicketResult> ticketResultRepository)
     {
         _lotteryRepository = lotteryRepository;
+        _ticketResultRepository = ticketResultRepository;
+    }
+
+    public async Task UpdateTicketPrize(int ticketId, string prize)
+    {
+        var ticket = await _lotteryRepository.GetById(ticketId);
+        if (ticket != null)
+        {
+            var ticketResult = ticket.TicketResults?.FirstOrDefault(tr => tr.Prize == prize);
+            if (ticketResult == null)
+            {
+                ticketResult = new TicketResult
+                {
+                    TicketId = ticketId,
+                    Prize = prize,
+                    DrawDate = DateTime.Now,
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now
+                };
+                if (ticket.TicketResults == null)
+                {
+                    ticket.TicketResults = new List<TicketResult>();
+                }
+                ticket.TicketResults.Add(ticketResult);
+                await _ticketResultRepository.Add(ticketResult);
+            }
+            else
+            {
+                ticketResult.Prize = prize;
+                ticketResult.UpdatedAt = DateTime.Now;
+                await _ticketResultRepository.Update(ticketResult);
+            }
+        }
     }
 
     public async Task<LotteryTicket> CreateLotteryTicket(LotteryTicket ticket)
