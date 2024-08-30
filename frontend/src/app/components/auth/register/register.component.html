@@ -1,0 +1,29 @@
+<h2>Đăng ký tài khoản</h2>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div id="form-items">
+        <div>
+            <label for="username">Tên người dùng</label>
+            <input id="username" placeholder="Tên người dùng" formControlName="username" type="text" class="text-input" />
+        </div>
+        
+        <div>
+            <label for="email">Email</label>
+            <input id="email" placeholder="Email" formControlName="email" type="email" class="text-input" />
+        </div>
+        
+        <div>
+            <label for="password">Mật khẩu</label>
+            <input id="password" placeholder="Mật khẩu" formControlName="password" type="password" class="text-input" />
+        </div>
+        
+        <div>
+            <label for="confirmPassword">Xác nhận mật khẩu</label>
+            <input id="confirmPassword" placeholder="Xác nhận mật khẩu" formControlName="confirmPassword" type="password" class="text-input" />
+        </div>
+    </div>
+  
+    <div style="text-align: center;">
+        <button type="submit">Đăng ký</button>
+    </div>
+  </form>
+  

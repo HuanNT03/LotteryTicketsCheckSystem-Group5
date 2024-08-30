@@ -1,0 +1,41 @@
+
+<h2>Kết quả các kỳ quay xổ số trước</h2>
+<div style="display: flex;">
+    <div class="container-box">
+        <div>
+            <div class="decoration"></div>
+            <div class="search-form-container">
+                <div class="description">
+                    <h3>Dò số</h3>
+                    <p>Chọn sản phẩm, nhập số của bạn vào những ô dưới, chọn ngày và dò kết quả</p>
+                </div>
+                <form (ngSubmit)="onSubmit()" [formGroup]="lotteryForm" class="form">
+                    <div class="form-group">
+                      <label for="company">Chọn công ty</label>
+                      <select id="company" formControlName="company" class="form-control" placeholder="Chọn công ty">
+                        <option *ngFor="let company of companies" [value]="company.id">{{ company.name }}</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="date">Chọn ngày</label>
+                      <input type="date" id="date" formControlName="date" class="form-control" placeholder="Chọn ngày"  />
+                    </div>
+                  
+                    <div class="form-group">
+                      <input type="text" id="ticketNumber" formControlName="ticketNumber" class="form-control text-input" placeholder="Nhập số" />
+                    </div>
+                  
+                    <button type="submit" class="ticket-results-search-bttn" >Dò số</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+    <div class="result-table">
+      <div *ngIf="!isAuthenticated">
+        <div *ngFor="let result of ticketResults" >
+          <app-ticket-result-table [ticketResult]="result"></app-ticket-result-table>
+        </div>
+      </div>
+    </div>
+</div>
+

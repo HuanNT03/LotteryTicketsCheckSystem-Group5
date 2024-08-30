@@ -1,0 +1,63 @@
+
+<div class="container">
+    <div class="decoration"></div>
+    <div class="find-ticket-container">
+        <div>
+            <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+                <div style="display: flex;">
+                    <div class="form-items">
+                        <label for="company">Chọn công ty</label>
+                        <select id="company" formControlName="company">
+                          <option *ngFor="let company of companies" [value]="company">{{ company }}</option>
+                        </select>
+                      </div>
+                    
+                      <div class="form-items">
+                        <label for="fromDate">Từ ngày</label>
+                        <input id="fromDate" type="date" formControlName="fromDate">
+                      </div>
+                    
+                      <div class="form-items">
+                        <label for="toDate">Đến ngày</label>
+                        <input id="toDate" type="date" formControlName="toDate">
+                      </div>
+                </div>
+                
+                <div>
+                    <button type="submit">Tìm kiếm</button>
+                </div>
+              </form>
+        </div>
+        <div>
+            <div *ngIf="results.length > 0">
+                <h3>Kết quả tìm kiếm</h3>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Số vé</th>
+                      <th>Ngày công bố kết quả</th>
+                      <th>Kết quả</th>
+                      <th>Thời gian</th>
+                      <th>Trạng thái</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let result of results">
+                      <td>{{ result.ticketNumber }}</td>
+                      <td>{{ result.publicDate | date: 'dd/MM/yyyy' }}</td>
+                      <td>{{ result.prize }}</td>
+                      <td>{{ result.company }}</td>
+                      <td>
+                        <select [(ngModel)]="result.status" (change)="changeStatus()">
+                            <option value="publish">Publish</option>
+                            <option value="unpublish">Unpublish</option>
+                        </select>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+        </div>
+    </div>
+</div>
+

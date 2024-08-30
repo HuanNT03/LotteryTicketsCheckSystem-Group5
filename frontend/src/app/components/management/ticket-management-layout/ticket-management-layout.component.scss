@@ -1,0 +1,39 @@
+#control-panel
+{
+    width: 15rem;
+    display: inline-block;
+    padding-right: 2rem;
+    border-right: 0.1rem solid lightgray;
+}
+#control-panel ul
+{
+    list-style-type: none;
+    padding: 0;
+}
+#control-panel li
+{
+    line-height: 2.5rem;
+    font-weight: bold;
+    border-left: 0.3rem solid transparent;
+    padding-left: 1rem;
+}
+#control-panel li a
+{
+    display: block;
+    line-height: 2.5rem;
+    text-decoration: none;
+    color: black;
+}
+#control-panel li:hover
+{
+    color: rgb(255, 49, 49);
+    border-left: 0.3rem solid rgb(255, 49, 49);
+    border-radius: 0 0.3rem 0.3rem 0;
+    background-color: rgb(231, 230, 230);
+}
+.container
+{
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+}

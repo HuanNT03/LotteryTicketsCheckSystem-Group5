@@ -1,0 +1,33 @@
+label
+{
+    display: block;
+    font-weight: bold;
+    line-height: 2rem;
+}
+.text-input 
+{
+    line-height: 1.5rem;
+    border: 0.1rem lightgray solid;
+    border-radius: 2rem;
+    width: 85%;
+}
+.text-input::placeholder
+{
+    padding: 0rem 1rem 0rem 1rem;
+}
+button
+{
+    padding: 0rem 1rem 0rem 1rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+    background: linear-gradient(to right, rgb(255,49,49), rgb(255, 111, 49));
+    border-radius: 2rem;
+    line-height: 1.8rem;
+    margin: 1rem 0rem 1rem 0rem;
+}
+#form-items
+{
+    display: grid;
+    grid-template-columns: auto auto;
+}
