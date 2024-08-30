@@ -60,14 +60,20 @@ public class AuthService
 
     public string GenerateJwtToken(User user)
     {
-        var role = user.UserRoles?.FirstOrDefault()?.Role?.RoleName ?? "User"; // Gán role mặc định nếu không có
+        var roles = user.UserRoles?.Select(ur => ur.Role.RoleName).ToList();
+        var claims = new List<Claim>
+{
+        new Claim(JwtRegisteredClaimNames.Sub, user.UserId.ToString()),
+        new Claim(JwtRegisteredClaimNames.UniqueName, user.Username),
+};
 
-        var claims = new[]
+        if (roles != null)
         {
-            new Claim(JwtRegisteredClaimNames.Sub, user.UserId.ToString()),
-            new Claim(JwtRegisteredClaimNames.UniqueName, user.Username),
-            new Claim(ClaimTypes.Role, role)
-        };
+            foreach (var role in roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
+        }
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512);
