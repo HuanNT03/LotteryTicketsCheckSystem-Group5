@@ -1,0 +1,9 @@
+C:\VisualStudio2022\source\repos\FPT\CPL_P-NET\Mock_Project\LotteryTicketsCheckSystem-Group5\LotteryBackend\bin\Debug\net8.0\.msCoverageSourceRootsMapping_LotteryBackend.WebAPI
+C:\VisualStudio2022\source\repos\FPT\CPL_P-NET\Mock_Project\LotteryTicketsCheckSystem-Group5\LotteryBackend\obj\Debug\net8.0\LotteryBackend.WebAPI.csproj.AssemblyReference.cache
+C:\VisualStudio2022\source\repos\FPT\CPL_P-NET\Mock_Project\LotteryTicketsCheckSystem-Group5\LotteryBackend\obj\Debug\net8.0\LotteryBackend.WebAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\VisualStudio2022\source\repos\FPT\CPL_P-NET\Mock_Project\LotteryTicketsCheckSystem-Group5\LotteryBackend\obj\Debug\net8.0\LotteryBackend.WebAPI.AssemblyInfoInputs.cache
+C:\VisualStudio2022\source\repos\FPT\CPL_P-NET\Mock_Project\LotteryTicketsCheckSystem-Group5\LotteryBackend\obj\Debug\net8.0\LotteryBackend.WebAPI.AssemblyInfo.cs
+C:\VisualStudio2022\source\repos\FPT\CPL_P-NET\Mock_Project\LotteryTicketsCheckSystem-Group5\LotteryBackend\obj\Debug\net8.0\LotteryBackend.WebAPI.csproj.CoreCompileInputs.cache
+C:\VisualStudio2022\source\repos\FPT\CPL_P-NET\Mock_Project\LotteryTicketsCheckSystem-Group5\LotteryBackend\obj\Debug\net8.0\LotteryBackend.WebAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\VisualStudio2022\source\repos\FPT\CPL_P-NET\Mock_Project\LotteryTicketsCheckSystem-Group5\LotteryBackend\obj\Debug\net8.0\LotteryBackend.WebAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\VisualStudio2022\source\repos\FPT\CPL_P-NET\Mock_Project\LotteryTicketsCheckSystem-Group5\LotteryBackend\obj\Debug\net8.0\LotteryBackend.WebAPI.sourcelink.json
