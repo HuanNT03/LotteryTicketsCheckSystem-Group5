@@ -1,0 +1,29 @@
+<h2>{{user}}</h2>
+<div>
+    <div class="container-box">
+        <div>
+            <div class="decoration"></div>
+            <div class="history-container">
+                <h3 style="text-align: center;">Lịch sử dò vé số</h3>
+                <table>
+                    <thead>
+                      <tr>
+                        <th>Số vé</th>
+                        <th>Ngày công bố kết quả</th>
+                        <th>Kết quả</th>
+                        <th>Thời gian</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let result of historySearch">
+                        <td>{{ result.ticketNumber }}</td>
+                        <td>{{ result.publicDate }}</td>
+                        <td>{{ result.result }}</td>
+                        <td>{{ result.searchTime }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="container">
+    <div id="form-container">
+        <div>
+            <app-login *ngIf="hasAccount"></app-login>
+            <div id="form-switch-item">
+                <div *ngIf="hasAccount">
+                    <h2>Chào mừng đến với Xskt</h2>
+                    <div><a>Bạn chưa có tài khoản?</a></div>
+                    <button id="changeToRegister" (click)="changeToRegister()">Đăng ký</button>
+                </div>
+                <div *ngIf="!hasAccount">
+                    <h2>Chào mừng đến với Xskt</h2>
+                    <div><a>Bạn đã có tài khoản?</a></div>
+                    <button id="changeToRegister" (click)="changeToLogin()">Đăng nhập</button>
+                </div>
+            </div>
+            <app-register *ngIf="!hasAccount"></app-register>
+        </div>
+    </div>
+</div>

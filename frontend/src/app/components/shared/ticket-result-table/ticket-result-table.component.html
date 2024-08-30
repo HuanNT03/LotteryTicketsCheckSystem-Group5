@@ -1,0 +1,46 @@
+<div>
+    <div class="container-box">
+        <h2>{{ticketResult.companyName}}</h2>
+        <div>Kết quả QXS ngày <strong>{{ticketResult.publicDate | date: 'dd/MM/yyyy'}}</strong></div>
+        <table>
+            <thead>
+                <tr>
+                    <th class="prize-tag">Giải thưởng</th>
+                    <th>Kết quả</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="prize-tag">Giải đặc biệt</td>
+                    <td> 
+                        <a *ngFor="let item of ticketResult.specialPrizes" class="prize-num" >{{item}}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="prize-tag">Giải nhất</td>
+                    <td > 
+                        <a *ngFor="let item of ticketResult.firstPrizes" class="prize-num" >{{item}}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="prize-tag">Giải nhì</td>
+                    <td > 
+                        <a *ngFor="let item of ticketResult.secondPrizes" class="prize-num">{{item}}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="prize-tag">Giải ba</td>
+                    <td > 
+                        <a *ngFor="let item of ticketResult.thirdPrizes" class="prize-num">{{item}}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="prize-tag">Giải bốn</td>
+                    <td > 
+                        <a *ngFor="let item of ticketResult.fourthPrize" class="prize-num">{{item}}</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
