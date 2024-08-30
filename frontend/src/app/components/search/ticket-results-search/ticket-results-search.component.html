@@ -1,38 +1,41 @@
-<app-navbar></app-navbar>
-<p>ticket-results-search works!</p>
+
 <h2>Kết quả các kỳ quay xổ số trước</h2>
-<div >
+<div style="display: flex;">
     <div class="container-box">
-        <div style="width: min-content;">
+        <div>
             <div class="decoration"></div>
             <div class="search-form-container">
-                <div style="border-bottom: 0.1rem solid lightgray;">
+                <div class="description">
                     <h3>Dò số</h3>
                     <p>Chọn sản phẩm, nhập số của bạn vào những ô dưới, chọn ngày và dò kết quả</p>
                 </div>
-                <form (ngSubmit)="onSubmit()" [formGroup]="lotteryForm">
+                <form (ngSubmit)="onSubmit()" [formGroup]="lotteryForm" class="form">
                     <div class="form-group">
                       <label for="company">Chọn công ty</label>
-                      <select id="company" formControlName="company" class="form-control">
+                      <select id="company" formControlName="company" class="form-control" placeholder="Chọn công ty">
                         <option *ngFor="let company of companies" [value]="company.id">{{ company.name }}</option>
                       </select>
                     </div>
                     <div class="form-group">
                       <label for="date">Chọn ngày</label>
-                      <input type="date" id="date" formControlName="date" class="form-control" placeholder="Chọn công ty" />
+                      <input type="date" id="date" formControlName="date" class="form-control" placeholder="Chọn ngày"  />
                     </div>
                   
                     <div class="form-group">
-                      <input type="text" id="ticketNumber" formControlName="ticketNumber" class="form-control" placeholder="Chọn ngày" />
+                      <input type="text" id="ticketNumber" formControlName="ticketNumber" class="form-control text-input" placeholder="Nhập số" />
                     </div>
                   
-                    <button type="submit" class="btn btn-primary" [disabled]="!lotteryForm.valid">Dò số</button>
+                    <button type="submit" class="ticket-results-search-bttn" >Dò số</button>
                   </form>
             </div>
         </div>
     </div>
     <div class="result-table">
-        <!-- <app-ticket-result-table [ticketResult]="result"></app-ticket-result-table> -->
+      <div *ngIf="!isAuthenticated">
+        <div *ngFor="let result of ticketResults" >
+          <app-ticket-result-table [ticketResult]="result"></app-ticket-result-table>
+        </div>
+      </div>
     </div>
 </div>
 

@@ -3,6 +3,7 @@ import { NavbarComponent } from "../../navbar/navbar/navbar.component";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TicketResultViewModel } from '../../../view-models/search/ticket-result.view-model';
+import { TicketResultTableComponent } from '../../shared/ticket-result-table/ticket-result-table.component';
 
 @Component({
   selector: 'app-ticket-results-search',
@@ -11,7 +12,8 @@ import { TicketResultViewModel } from '../../../view-models/search/ticket-result
     NavbarComponent,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TicketResultTableComponent
   ],
   templateUrl: './ticket-results-search.component.html',
   styleUrl: './ticket-results-search.component.scss'
@@ -23,7 +25,33 @@ export class TicketResultsSearchComponent implements OnInit {
     { id: 2, name: 'Company B' },
     { id: 3, name: 'Company C' }
   ];
-  ticketResults!:TicketResultViewModel;
+  ticketResults:TicketResultViewModel[] = [{
+    companyName:'Xskt1',
+    publicDate: new Date(2024, 8, 21),
+    specialPrizes: [ '1234'],
+    firstPrizes: [ '3445', '2345'],
+    secondPrizes: ['9876', '5363'],
+    thirdPrizes: ['6750', '2973'],
+    fourthPrize: ['4601', '0927', '4621', '0127']
+  },
+  {
+    companyName:'Xskt1',
+    publicDate: new Date(2024, 8, 21),
+    specialPrizes: [ '1234'],
+    firstPrizes: [ '3445', '2345'],
+    secondPrizes: ['9876', '5363'],
+    thirdPrizes: ['6750', '2973'],
+    fourthPrize: ['4601', '0927', '4621', '0127']
+  },
+  {
+    companyName:'Xskt1',
+    publicDate: new Date(2024, 8, 21),
+    specialPrizes: [ '1234'],
+    firstPrizes: [ '3445', '2345'],
+    secondPrizes: ['9876', '5363'],
+    thirdPrizes: ['6750', '2973'],
+    fourthPrize: ['4601', '0927', '4621', '0127']
+  }];
   isAuthenticated:boolean = false;
 
   constructor() {}
@@ -34,6 +62,7 @@ export class TicketResultsSearchComponent implements OnInit {
       date: new FormControl(''),
       ticketNumber: new FormControl('')
     })
+    
   }
 
   onSubmit(): void {

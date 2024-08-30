@@ -3,6 +3,7 @@ import { NavbarComponent } from "../../navbar/navbar/navbar.component";
 import { TicketResultTableComponent } from '../ticket-result-table/ticket-result-table.component';
 import { CommonModule } from '@angular/common';
 import { TicketResultViewModel } from '../../../view-models/search/ticket-result.view-model';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-user-layout',
@@ -10,7 +11,8 @@ import { TicketResultViewModel } from '../../../view-models/search/ticket-result
   imports: [
     NavbarComponent,
     TicketResultTableComponent,
-    CommonModule
+    CommonModule,
+    RouterOutlet
   ],
   templateUrl: './user-layout.component.html',
   styleUrl: './user-layout.component.scss'

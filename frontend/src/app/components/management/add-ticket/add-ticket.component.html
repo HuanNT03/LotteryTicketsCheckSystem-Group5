@@ -1,0 +1,48 @@
+
+<div class="container">
+    <div class="decoration"></div>
+    <div class="add-ticket-container">
+        <div class="description">
+            <h3>Thêm vé dò</h3>
+            <p>Chọn kỳ, trạng thái, nhập số vé tương ứng vào những ô dưới và lưu lại kết quả vé dò</p>
+        </div>
+        <div class="add-ticket-form">
+            <form [formGroup]="lotteryForm" (ngSubmit)="onSubmit()">
+                <div>
+                  <label for="date">Ngày:</label>
+                  <input type="date" id="date" formControlName="date">
+                </div>
+              
+                <div>
+                  <label for="company">Công ty:</label>
+                  <select id="company" formControlName="company">
+                    <option *ngFor="let company of companies" [value]="company">{{ company }}</option>
+                  </select>
+                </div>
+              
+                <div>
+                  <label for="prize">Giải thưởng:</label>
+                  <select id="prize" formControlName="prize">
+                    <option *ngFor="let prize of prizes" [value]="prize">{{ prize }}</option>
+                  </select>
+                </div>
+              
+                <div>
+                  <label for="status">Trạng thái:</label>
+                  <select id="status" formControlName="status">
+                    <option value="publish">Publish</option>
+                    <option value="unpublish">Unpublish</option>
+                  </select>
+                </div>
+              
+                <div>
+                  <label for="lotteryNumber">Số vé dò:</label>
+                  <input type="text" id="lotteryNumber" formControlName="lotteryNumber">
+                </div>
+              
+                <button type="submit">Submit</button>
+              </form>
+        </div>
+    </div>
+</div>
+        

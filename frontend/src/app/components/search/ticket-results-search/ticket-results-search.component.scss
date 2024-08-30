@@ -1,0 +1,63 @@
+.ticket-results-search-bttn
+{
+    padding: 0rem 2rem 0rem 2rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+    background-color: rgb(255, 49, 49);
+    border-radius: 1.8rem;
+    line-height: 3rem;
+    margin: 1rem 0.5rem 1rem 0.5rem;
+}
+.decoration{
+    height: 1.5rem;
+    width: 100%;
+    background: linear-gradient(to right, rgb(255,49,49), rgb(255, 111, 49));
+}
+.container-box
+{
+    margin: 3rem;
+    display: inline-block;
+}
+.container-box > div
+{
+    width: 20rem;
+}
+h2
+{
+    text-transform: uppercase;
+    text-align: center;
+}
+.search-form-container
+{
+    border: solid 0.1rem lightgray;
+}
+.form{
+    padding: 1rem 2rem 1rem  2rem;
+}
+.description
+{
+    border-bottom: 0.1rem solid lightgray;
+    padding: 0 2rem 0  2rem;
+}
+label
+{
+    display: block;
+    font-weight: bold;
+    line-height: 2rem;
+}
+.text-input 
+{
+    line-height: 1.5rem;
+    border: 0.1rem lightgray solid;
+    border-radius: 2rem;
+    margin-top: 1rem;
+}
+.text-input::placeholder
+{
+    padding: 0rem 1rem 0rem 1rem;
+}
+.result-table
+{
+    margin: 3rem;
+}

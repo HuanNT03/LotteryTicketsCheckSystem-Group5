@@ -1,14 +1,32 @@
-table, td
-{
-    border-bottom: 0.1rem lightgray solid;
-    padding: 0.5rem;
+table {
+    width: 100%;
     border-collapse: collapse;
+    margin: 20px 0;
 }
-table
-{
-    width: 50rem;
+
+th,
+td {
+    padding: 10px;
     text-align: center;
+    border-bottom: 1px solid #ddd;
 }
+
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+// table, td
+// {
+//     border-bottom: 0.1rem lightgray solid;
+//     padding: 0.5rem;
+//     border-collapse: collapse;
+// }
+// table
+// {
+//     width: 100%;
+//     text-align: center;
+// }
+
 .prize-tag
 {
     width: 10rem;
@@ -18,4 +36,6 @@ table
 {
     padding-left: 3rem;
     padding-right: 3rem;
+    color: rgb(255, 49, 49);
+    font-weight: bold;
 }

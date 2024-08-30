@@ -1,4 +1,4 @@
-import { Component, HostListener, ElementRef, ViewChild } from '@angular/core';
+import { Component, HostListener, ElementRef, ViewChild, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
@@ -15,8 +15,12 @@ import { RouterLink } from '@angular/router';
 export class NavbarComponent {
   user:string = "Username";
   admin:string = "Admin";
-  public isAuthenticated:boolean = false;
-  public isAdmin:boolean = false;
+  _user:any = {
+    id: 0,
+    name: ''
+  }
+  @Input() public isAuthenticated:boolean = false;
+  @Input() public isAdmin:boolean = false;
   public visible:boolean = false;
   // noUserNavbarItems:string[] = ["Trang chủ", "Trúng thưởng"];
   // userNavbarItems:string[] = ["Trang chủ", "Trúng thưởng", "Lịch sử"];

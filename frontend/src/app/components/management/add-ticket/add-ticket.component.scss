@@ -1,0 +1,49 @@
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+input, select {
+    padding: 0.5rem;
+    border-radius: 2rem;
+    border: 0.1rem solid lightgray;
+}
+.decoration{
+    height: 1.5rem;
+    width: 100%;
+    background: linear-gradient(to right, rgb(255,49,49), rgb(255, 111, 49));
+}
+.container
+{
+    margin: 3rem;
+}
+h3
+{
+    text-transform: uppercase;
+    text-align: center;
+}
+.add-ticket-container
+{
+    border: solid 0.1rem lightgray;
+}
+.description
+{
+    border-bottom: solid 0.1rem lightgray;
+    padding: 2rem;
+}
+button
+{
+    padding: 0rem 2rem 0rem 2rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+    background-color: rgb(255, 49, 49);
+    border-radius: 1.8rem;
+    line-height: 3rem;
+    margin: 1rem 0.5rem 1rem 0.5rem;
+}
+.add-ticket-form
+{
+    padding: 2rem;
+}
