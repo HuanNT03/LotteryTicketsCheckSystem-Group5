@@ -29,7 +29,7 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let user of users">
-                    <td><input type="checkbox" [(ngModel)]="user.selected" (change)="onCheckBoxChange()" /></td>
+                    <td class="checkbox-collumn"><input type="checkbox" [(ngModel)]="user.selected" (change)="onCheckBoxChange()" /></td>
                     <td>{{ user.username }}</td>
                     <td>{{ user.email }}</td>
                     <td>
@@ -46,8 +46,8 @@
             </table>
         </div>
     </div>
-    <div id="change-status-panel" *ngIf="visible">
-        <button (click)="changeMultiStatus()">Deactivate</button>
-        <button (click)="changeMultiStatus()">Activate</button>
-    </div>
+</div>
+<div id="change-status-panel" *ngIf="visible">
+    <button (click)="changeMultiStatus()">Deactivate</button>
+    <button (click)="changeMultiStatus()">Activate</button>
 </div>

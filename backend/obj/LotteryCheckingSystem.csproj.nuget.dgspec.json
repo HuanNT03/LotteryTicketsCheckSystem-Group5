@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\code_virual\\C#_.NET\\FPT_.NET_FINAL_PROJECT\\Test_6\\LotteryCheckingSystem\\LotteryCheckingSystem.csproj": {}
+    "C:\\VisualStudio2022\\source\\repos\\FPT\\CPL_P-NET\\Mock_Project\\LotteryTicketsCheckSystem-Group5\\backend\\LotteryCheckingSystem.csproj": {}
   },
   "projects": {
-    "D:\\code_virual\\C#_.NET\\FPT_.NET_FINAL_PROJECT\\Test_6\\LotteryCheckingSystem\\LotteryCheckingSystem.csproj": {
+    "C:\\VisualStudio2022\\source\\repos\\FPT\\CPL_P-NET\\Mock_Project\\LotteryTicketsCheckSystem-Group5\\backend\\LotteryCheckingSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\code_virual\\C#_.NET\\FPT_.NET_FINAL_PROJECT\\Test_6\\LotteryCheckingSystem\\LotteryCheckingSystem.csproj",
+        "projectUniqueName": "C:\\VisualStudio2022\\source\\repos\\FPT\\CPL_P-NET\\Mock_Project\\LotteryTicketsCheckSystem-Group5\\backend\\LotteryCheckingSystem.csproj",
         "projectName": "LotteryCheckingSystem",
-        "projectPath": "D:\\code_virual\\C#_.NET\\FPT_.NET_FINAL_PROJECT\\Test_6\\LotteryCheckingSystem\\LotteryCheckingSystem.csproj",
+        "projectPath": "C:\\VisualStudio2022\\source\\repos\\FPT\\CPL_P-NET\\Mock_Project\\LotteryTicketsCheckSystem-Group5\\backend\\LotteryCheckingSystem.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\code_virual\\C#_.NET\\FPT_.NET_FINAL_PROJECT\\Test_6\\LotteryCheckingSystem\\obj\\",
+        "outputPath": "C:\\VisualStudio2022\\source\\repos\\FPT\\CPL_P-NET\\Mock_Project\\LotteryTicketsCheckSystem-Group5\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -104,7 +104,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

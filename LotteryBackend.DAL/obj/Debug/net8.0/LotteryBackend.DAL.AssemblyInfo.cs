@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LotteryBackend.DAL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5517d0f05b9f5b7a45033a4b3af7e5d056b3e2ab")]
 [assembly: System.Reflection.AssemblyProductAttribute("LotteryBackend.DAL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LotteryBackend.DAL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

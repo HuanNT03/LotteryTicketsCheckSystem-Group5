@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\admin\\Desktop\\Intern\\FPT\\S5-POT\\Fin Project\\LotteryApp\\LotteryBackend.DAL\\LotteryBackend.DAL.csproj": {}
+    "C:\\VisualStudio2022\\source\\repos\\FPT\\CPL_P-NET\\Mock_Project\\LotteryTicketsCheckSystem-Group5\\LotteryBackend.DAL\\LotteryBackend.DAL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\admin\\Desktop\\Intern\\FPT\\S5-POT\\Fin Project\\LotteryApp\\LotteryBackend.DAL\\LotteryBackend.DAL.csproj": {
+    "C:\\VisualStudio2022\\source\\repos\\FPT\\CPL_P-NET\\Mock_Project\\LotteryTicketsCheckSystem-Group5\\LotteryBackend.DAL\\LotteryBackend.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\Desktop\\Intern\\FPT\\S5-POT\\Fin Project\\LotteryApp\\LotteryBackend.DAL\\LotteryBackend.DAL.csproj",
+        "projectUniqueName": "C:\\VisualStudio2022\\source\\repos\\FPT\\CPL_P-NET\\Mock_Project\\LotteryTicketsCheckSystem-Group5\\LotteryBackend.DAL\\LotteryBackend.DAL.csproj",
         "projectName": "LotteryBackend.DAL",
-        "projectPath": "C:\\Users\\admin\\Desktop\\Intern\\FPT\\S5-POT\\Fin Project\\LotteryApp\\LotteryBackend.DAL\\LotteryBackend.DAL.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\Desktop\\Intern\\FPT\\S5-POT\\Fin Project\\LotteryApp\\LotteryBackend.DAL\\obj\\",
+        "projectPath": "C:\\VisualStudio2022\\source\\repos\\FPT\\CPL_P-NET\\Mock_Project\\LotteryTicketsCheckSystem-Group5\\LotteryBackend.DAL\\LotteryBackend.DAL.csproj",
+        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+        "outputPath": "C:\\VisualStudio2022\\source\\repos\\FPT\\CPL_P-NET\\Mock_Project\\LotteryTicketsCheckSystem-Group5\\LotteryBackend.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -81,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

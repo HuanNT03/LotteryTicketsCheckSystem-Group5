@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "q3b49qw/WqQ=",
+  "dgSpecHash": "CHZG+A21QXI=",
   "success": true,
-  "projectFilePath": "D:\\code_virual\\C#_.NET\\FPT_.NET_FINAL_PROJECT\\Test_6\\LotteryCheckingSystem\\LotteryCheckingSystem.csproj",
+  "projectFilePath": "C:\\VisualStudio2022\\source\\repos\\FPT\\CPL_P-NET\\Mock_Project\\LotteryTicketsCheckSystem-Group5\\backend\\LotteryCheckingSystem.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ADMIN\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
