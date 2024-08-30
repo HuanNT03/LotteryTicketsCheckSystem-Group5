@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -11,6 +12,7 @@ public class CheckHistoryController : ControllerBase
         _checkHistoryService = checkHistoryService;
     }
 
+    //[Authorize(Roles = "User")]
     [HttpGet("user/{userId}")]
     public async Task<IActionResult> GetCheckHistoriesByUserId(int userId)
     {
@@ -33,6 +35,7 @@ public class CheckHistoryController : ControllerBase
         return Ok(result);
     }
 
+    //[Authorize(Roles = "Admin")]
     [HttpGet]
     public async Task<IActionResult> GetCheckHistories()
     {
@@ -40,6 +43,7 @@ public class CheckHistoryController : ControllerBase
         return Ok(checkHistories);
     }
 
+    //[Authorize(Roles = "Admin")]
     [HttpGet("{id}")]
     public async Task<IActionResult> GetCheckHistory(int id)
     {
@@ -48,6 +52,7 @@ public class CheckHistoryController : ControllerBase
         return Ok(checkHistory);
     }
 
+    //[Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<IActionResult> CreateCheckHistory([FromBody] CheckHistory checkHistory)
     {
@@ -55,6 +60,7 @@ public class CheckHistoryController : ControllerBase
         return CreatedAtAction(nameof(GetCheckHistory), new { id = checkHistory.CH_Id }, checkHistory);
     }
 
+    //[Authorize(Roles = "Admin")]
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateCheckHistory(int id, [FromBody] CheckHistory checkHistory)
     {
@@ -63,6 +69,7 @@ public class CheckHistoryController : ControllerBase
         return NoContent();
     }
 
+    //[Authorize(Roles = "Admin")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteCheckHistory(int id)
     {

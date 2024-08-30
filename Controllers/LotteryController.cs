@@ -12,6 +12,7 @@ public class LotteryController : ControllerBase
         _lotteryService = lotteryService;
     }
 
+    //[Authorize(Roles = "Admin")]
     [HttpPost("update-prize")]
     public async Task<IActionResult> UpdateTicketPrize([FromBody] UpdatePrizeDto dto)
     {
@@ -19,6 +20,7 @@ public class LotteryController : ControllerBase
         return Ok();
     }
 
+    //[Authorize(Roles = "Admin")]
     // Endpoint để tạo vé số mới
     [HttpPost("create")]
     //[Authorize(Roles = "Admin")] // Chỉ admin mới có quyền tạo vé số
@@ -41,7 +43,7 @@ public class LotteryController : ControllerBase
         return CreatedAtAction(nameof(CreateLotteryTicket), new { id = createdTicket.TicketId }, createdTicket);
     }
 
-
+    //[Authorize(Roles = "Admin")]
     [HttpGet]
     public async Task<IActionResult> GetAllLotteryTickets()
     {
@@ -58,6 +60,7 @@ public class LotteryController : ControllerBase
         return Ok(result);
     }
 
+    //[Authorize(Roles = "Admin")]
     [HttpGet("{id}")]
     public async Task<IActionResult> GetTicket(int id)
     {
@@ -66,6 +69,7 @@ public class LotteryController : ControllerBase
         return Ok(ticket);
     }
 
+    //[Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<IActionResult> CreateTicket([FromBody] LotteryTicket ticket)
     {
@@ -73,6 +77,7 @@ public class LotteryController : ControllerBase
         return CreatedAtAction(nameof(GetTicket), new { id = ticket.TicketId }, ticket);
     }
 
+    //[Authorize(Roles = "Admin")]
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateTicket(int id, [FromBody] LotteryTicket ticket)
     {
@@ -81,6 +86,7 @@ public class LotteryController : ControllerBase
         return NoContent();
     }
 
+    //[Authorize(Roles = "Admin")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteTicket(int id)
     {
@@ -88,6 +94,7 @@ public class LotteryController : ControllerBase
         return NoContent();
     }
 
+    //[AllowAnonymous]
     [HttpGet("search")]
     public async Task<IActionResult> GetTicketIdsByCompanyAndDate([FromQuery] string companyName, [FromQuery] DateTime issueDate)
     {
