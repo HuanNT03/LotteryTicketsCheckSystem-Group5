@@ -1,0 +1,15 @@
+C:\Users\admin\Desktop\Intern\FPT\S5-POT\Fin Project\LotteryApp\LotteryBackend.Business\bin\Debug\net8.0\LotteryBackend.Business.deps.json
+C:\Users\admin\Desktop\Intern\FPT\S5-POT\Fin Project\LotteryApp\LotteryBackend.Business\bin\Debug\net8.0\LotteryBackend.Business.dll
+C:\Users\admin\Desktop\Intern\FPT\S5-POT\Fin Project\LotteryApp\LotteryBackend.Business\bin\Debug\net8.0\LotteryBackend.Business.pdb
+C:\Users\admin\Desktop\Intern\FPT\S5-POT\Fin Project\LotteryApp\LotteryBackend.Business\bin\Debug\net8.0\LotteryBackend.DAL.dll
+C:\Users\admin\Desktop\Intern\FPT\S5-POT\Fin Project\LotteryApp\LotteryBackend.Business\bin\Debug\net8.0\LotteryBackend.DAL.pdb
+C:\Users\admin\Desktop\Intern\FPT\S5-POT\Fin Project\LotteryApp\LotteryBackend.Business\obj\Debug\net8.0\LotteryBackend.Business.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\Intern\FPT\S5-POT\Fin Project\LotteryApp\LotteryBackend.Business\obj\Debug\net8.0\LotteryBackend.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Desktop\Intern\FPT\S5-POT\Fin Project\LotteryApp\LotteryBackend.Business\obj\Debug\net8.0\LotteryBackend.Business.AssemblyInfoInputs.cache
+C:\Users\admin\Desktop\Intern\FPT\S5-POT\Fin Project\LotteryApp\LotteryBackend.Business\obj\Debug\net8.0\LotteryBackend.Business.AssemblyInfo.cs
+C:\Users\admin\Desktop\Intern\FPT\S5-POT\Fin Project\LotteryApp\LotteryBackend.Business\obj\Debug\net8.0\LotteryBackend.Business.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\Intern\FPT\S5-POT\Fin Project\LotteryApp\LotteryBackend.Business\obj\Debug\net8.0\LotteryB.EFB92B9E.Up2Date
+C:\Users\admin\Desktop\Intern\FPT\S5-POT\Fin Project\LotteryApp\LotteryBackend.Business\obj\Debug\net8.0\LotteryBackend.Business.dll
+C:\Users\admin\Desktop\Intern\FPT\S5-POT\Fin Project\LotteryApp\LotteryBackend.Business\obj\Debug\net8.0\refint\LotteryBackend.Business.dll
+C:\Users\admin\Desktop\Intern\FPT\S5-POT\Fin Project\LotteryApp\LotteryBackend.Business\obj\Debug\net8.0\LotteryBackend.Business.pdb
+C:\Users\admin\Desktop\Intern\FPT\S5-POT\Fin Project\LotteryApp\LotteryBackend.Business\obj\Debug\net8.0\ref\LotteryBackend.Business.dll
